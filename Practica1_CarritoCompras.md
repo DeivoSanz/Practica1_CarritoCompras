@@ -1,3 +1,19 @@
+# CATALOGO Y MUESTRA DE CATALOGO encargado por: Joselyn Lopez Huerta
+def cargar_catalogo():
+    return {
+        "P001": {"nombre": "Leche", "precio": 29.0, "stock": 10},
+        "P002": {"nombre": "Pan", "precio": 30.0, "stock": 15},
+        "P003": {"nombre": "Cereal", "precio": 50.0, "stock": 20},
+        "P004": {"nombre": "Minecraft", "precio": 499.0, "stock": 5},
+        "P005": {"nombre": "Azucar", "precio": 35.0, "stock": 30}
+    }
+
+def mostrar_catalogo(catalogo):
+    print("\n--- Catálogo de Productos ---")
+    print(f"{'ID':<6} | {'Nombre':<10} | {'Precio':<8} | {'Stock'}")
+    for id_prod, info in catalogo.items():
+        print(f"{id_prod:<6} | {info['nombre']:<10} | ${info['precio']:<7} | {info['stock']}")
+        
 # Calculos, Descuentos y generacion de Ticket encargado por: David Juarez Sanchez
 def calcular_subtotal(carrito, catalogo):
     subtotal = 0.0
