@@ -13,7 +13,7 @@ def mostrar_catalogo(catalogo):
     print(f"{'ID':<6} | {'Nombre':<10} | {'Precio':<8} | {'Stock'}")
     for id_prod, info in catalogo.items():
         print(f"{id_prod:<6} | {info['nombre']:<10} | ${info['precio']:<7} | {info['stock']}")
-        
+
 # Calculos, Descuentos y generacion de Ticket encargado por: David Juarez Sanchez
 def calcular_subtotal(carrito, catalogo):
     subtotal = 0.0
