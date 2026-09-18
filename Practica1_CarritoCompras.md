@@ -14,6 +14,28 @@ def mostrar_catalogo(catalogo):
     for id_prod, info in catalogo.items():
         print(f"{id_prod:<6} | {info['nombre']:<10} | ${info['precio']:<7} | {info['stock']}")
 
+
+# Agregar Producto y eliminar producto encargado por: Jan Sebastian Mendez Lara
+def agregar_producto(carrito, catalogo, id_producto, cantidad):
+    if id_producto in catalogo:
+        if catalogo[id_producto]["stock"] >= cantidad:
+            carrito.append((id_producto, cantidad))
+            catalogo[id_producto]["stock"] -= cantidad
+            print("\nProducto agregado correctamente al carrito.")
+        else:
+            print("\nError: Stock insuficiente.")
+    else:
+        print("\nError: Producto no encontrado.")
+    return carrito
+
+def eliminar_producto(carrito, id_producto):
+    for i in range(len(carrito)):
+        if carrito[i][0] == id_producto:
+            carrito.pop(i)
+            print("\nProducto eliminado del carrito.")
+            return
+    print("\nError: Producto no encontrado en el carrito.")
+
 # Calculos, Descuentos y generacion de Ticket encargado por: David Juarez Sanchez
 def calcular_subtotal(carrito, catalogo):
     subtotal = 0.0
