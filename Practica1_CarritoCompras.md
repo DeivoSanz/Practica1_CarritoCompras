@@ -81,3 +81,52 @@ def generar_ticket(carrito, catalogo, total):
     print("=" * 30)
     
     return ticket
+
+#MENU hecho por: Roberto Delfin cortez y Brenda Prsicila Fabian Coatl
+def main():
+    catalogo = cargar_catalogo()
+    carrito = []
+    
+    while True:
+        print("\n--- MENÚ PRINCIPAL ---")
+        print("1. Mostrar catálogo")
+        print("2. Agregar producto al carrito")
+        print("3. Eliminar producto del carrito")
+        print("4. Generar ticket y salir")
+        print("5. Salir sin comprar")
+        
+        opcion = input("\nElige una opción (1-5): ")
+        
+        if opcion == '1':
+            mostrar_catalogo(catalogo)
+            
+        elif opcion == '2':
+            id_prod = input("Ingresa el ID del producto: ").upper()
+            cantidad = int(input("Ingresa la cantidad: "))
+            carrito = agregar_producto(carrito, catalogo, id_prod, cantidad)
+            
+        elif opcion == '3':
+            id_prod = input("Ingresa el ID del producto a eliminar: ").upper()
+            eliminar_producto(carrito, id_prod)
+            
+        elif opcion == '4':
+            if len(carrito) == 0:
+                print("\nError: El carrito está vacío. Agrega productos antes de pagar.")
+            else:
+                subtotal = calcular_subtotal(carrito, catalogo)
+                print(f"\nSubtotal de la compra: ${subtotal:.2f}")
+                tipo_descuento = input("¿Tipo de descuento? (porcentaje, 3x2, o presiona Enter para ninguno): ").lower()
+                
+                total = aplicar_descuento(subtotal, tipo_descuento)
+                generar_ticket(carrito, catalogo, total)
+                break
+                
+        elif opcion == '5':
+            print("\nSaliendo del sistema...")
+            break
+            
+        else:
+            print("\nOpción no válida. Por favor, intenta de nuevo.")
+
+if __name__ == "__main__":
+    main()
